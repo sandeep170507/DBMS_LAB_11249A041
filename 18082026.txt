@@ -1,0 +1,376 @@
+Microsoft Windows [Version 10.0.19045.6456]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>d:
+
+D:\>sqlplus
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Aug 18 16:04:06 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: A041@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> DESC COURSE4
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSE_ID                                 NOT NULL NUMBER(2)
+ COURSE_NAME                               NOT NULL VARCHAR2(20)
+
+SQL> INSERT INTO COURSE4 VALUES (3, 'MECH');
+^C
+D:\>
+
+D:\>
+
+D:\>SQLPLUS
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Aug 18 16:14:03 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: A041@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> INSERT INTO COURSE4 (COURSE_ID, COURSE_NAME)
+  2  VALUES (3, 'MECH');
+^C
+D:\>SQLPLUS
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Aug 18 16:14:45 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: A041@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> CREATE TABLE COURSE5(
+  2  COURSE_ID NUMBER(2) PRIMARY KEY,
+  3  COURSE_NAME VARCHAR(20) NOT NULL);
+CREATE TABLE COURSE5(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> CREATE TABLE COURSE6(
+  2  COURSE_ID NUMBER(2) PRIMARY KEY,
+  3  COURSE_NAME VARCHAR(20) NOT NULL);
+
+Table created.
+
+SQL> INSERT INTO COURSE6 VALUES (3, 'MECH');
+
+1 row created.
+
+SQL> SELECT
+  2  * FROM COURSE6;
+
+ COURSE_ID COURSE_NAME
+---------- --------------------
+         3 MECH
+
+SQL> INSERT INTO COURSE4 VALUES (1, 'CSE');
+INSERT INTO COURSE4 VALUES (1, 'CSE')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A041.SYS_C0029319) violated
+
+
+SQL> INSERT INTO COURSE4 VALUES (2, 'ECE');
+INSERT INTO COURSE4 VALUES (2, 'ECE')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A041.SYS_C0029319) violated
+
+
+SQL> INSERT INTO COURSE4 VALUES (3, 'MECH');
+
+1 row created.
+
+SQL> INSERT INTO COURSE4 VALUES (4, 'CIVIL');
+
+1 row created.
+
+SQL> INSERT INTO COURSE4 VALUES (5, 'EEE');
+
+1 row created.
+
+SQL> INSERT INTO COURSE4 VALUES (6, 'IT');
+
+1 row created.
+
+SQL> INSERT INTO COURSE4 VALUES (7, 'AIDS');
+
+1 row created.
+
+SQL> INSERT INTO COURSE4 VALUES (8, 'AIML');
+
+1 row created.
+
+SQL> SELECT * FROM COURSE6;
+
+ COURSE_ID COURSE_NAME
+---------- --------------------
+         3 MECH
+
+SQL> SELECT * FROM COURSE4;
+
+ COURSE_ID COURSE_NAME
+---------- --------------------
+         1 CSE
+         2 ECE
+         3 MECH
+         4 CIVIL
+         5 EEE
+         6 IT
+         7 AIDS
+         8 AIML
+
+8 rows selected.
+
+SQL>
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Arun Kumar', '11249a001', 20, 1, 'arun@gmail.com', 9876543210);
+
+1 row created.
+
+SQL>
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Priya', '11249A002', 19, 1, 'priya@gmail.com', 9876543211);
+
+1 row created.
+
+SQL>
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Rahul', '11249A003', 21, 2, 'rahul@gmail.com', 9876543212);
+
+1 row created.
+
+SQL>
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Divya', '11249A004', 20, 2, 'divya@gmail.com', 9876543213);
+
+1 row created.
+
+SQL>
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('KIRAN', '11249A005', 19, 1, 'kiran@gmail.com', 9876543214);
+
+1 row created.
+
+SQL>
+SQL>
+SQL>
+SQL>
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Sneha', '11249A006', 20, 6, 'sneha@gmail.com', 9876543215);
+
+1 row created.
+
+SQL>
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Vijay', '11249A007', 21, 7, 'vijay@gmail.com', 9876543216);
+
+1 row created.
+
+SQL>
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Anjali', '11249A008', 19, 8, 'anjali@gmail.com', 9876543217);
+
+1 row created.
+
+SQL> SELECT * FROM STUDENT8;
+
+NAME                                               REG                 AGE
+-------------------------------------------------- ------------ ----------
+ COURSE_ID EMAIL                                                   PHONE
+---------- -------------------------------------------------- ----------
+Arun Kumar                                         11249a001            20
+         1 arun@gmail.com                                     9876543210
+
+Priya                                              11249A002            19
+         1 priya@gmail.com                                    9876543211
+
+Rahul                                              11249A003            21
+         2 rahul@gmail.com                                    9876543212
+
+
+NAME                                               REG                 AGE
+-------------------------------------------------- ------------ ----------
+ COURSE_ID EMAIL                                                   PHONE
+---------- -------------------------------------------------- ----------
+Divya                                              11249A004            20
+         2 divya@gmail.com                                    9876543213
+
+KIRAN                                              11249A005            19
+         1 kiran@gmail.com                                    9876543214
+
+Sneha                                              11249A006            20
+         6 sneha@gmail.com                                    9876543215
+
+
+NAME                                               REG                 AGE
+-------------------------------------------------- ------------ ----------
+ COURSE_ID EMAIL                                                   PHONE
+---------- -------------------------------------------------- ----------
+Vijay                                              11249A007            21
+         7 vijay@gmail.com                                    9876543216
+
+Anjali                                             11249A008            19
+         8 anjali@gmail.com                                   9876543217
+
+
+8 rows selected.
+
+SQL> SET LINESIZE 150
+SQL> SET PAGESIZE 50
+SQL>
+SQL> COLUMN STUDENT_ID FORMAT 9999
+SQL> COLUMN STUDENT_NAME FORMAT A20
+SQL> COLUMN STUDENT_AGE FORMAT 999
+SQL> COLUMN STUDENT_PHONE FORMAT 999999999999
+SQL> COLUMN STUDENT_EMAIL FORMAT A30
+SQL> COLUMN STUDENT_DEPT FORMAT A10
+SQL> SELECT * FROM STUDENT8;
+
+NAME                                               REG                 AGE  COURSE_ID EMAIL                                                   PHONE
+-------------------------------------------------- ------------ ---------- ---------- -------------------------------------------------- ----------
+Arun Kumar                                         11249a001            20          1 arun@gmail.com                                     9876543210
+Priya                                              11249A002            19          1 priya@gmail.com                                    9876543211
+Rahul                                              11249A003            21          2 rahul@gmail.com                                    9876543212
+Divya                                              11249A004            20          2 divya@gmail.com                                    9876543213
+KIRAN                                              11249A005            19          1 kiran@gmail.com                                    9876543214
+Sneha                                              11249A006            20          6 sneha@gmail.com                                    9876543215
+Vijay                                              11249A007            21          7 vijay@gmail.com                                    9876543216
+Anjali                                             11249A008            19          8 anjali@gmail.com                                   9876543217
+
+8 rows selected.
+
+SQL> SELECT * FROM COURSE4;
+
+ COURSE_ID COURSE_NAME
+---------- --------------------
+         1 CSE
+         2 ECE
+         3 MECH
+         4 CIVIL
+         5 EEE
+         6 IT
+         7 AIDS
+         8 AIML
+
+8 rows selected.
+
+SQL> SELECT S.NAME, S.REG, S.AGE, C.COURSE_NAME
+  2  FROM STUDENT8 S
+  3  JOIN COURSE4 C
+  4  ON S.COURSE_ID = C.COURSE_ID;
+
+NAME                                               REG                 AGE COURSE_NAME
+-------------------------------------------------- ------------ ---------- --------------------
+Arun Kumar                                         11249a001            20 CSE
+Priya                                              11249A002            19 CSE
+Rahul                                              11249A003            21 ECE
+Divya                                              11249A004            20 ECE
+KIRAN                                              11249A005            19 CSE
+Sneha                                              11249A006            20 IT
+Vijay                                              11249A007            21 AIDS
+Anjali                                             11249A008            19 AIML
+
+8 rows selected.
+
+SQL>
+SQL> SELECT S.NAME, S.REG, S.AGE,S.EMAIL,S.PHONE, C.COURSE_NAME
+  2  FROM STUDENT8 S
+  3  JOIN COURSE4 C
+  4  ON S.COURSE_ID = C.COURSE_ID;
+
+NAME                                               REG                 AGE EMAIL                                                   PHONE
+-------------------------------------------------- ------------ ---------- -------------------------------------------------- ----------
+COURSE_NAME
+--------------------
+Arun Kumar                                         11249a001            20 arun@gmail.com                                     9876543210
+CSE
+
+Priya                                              11249A002            19 priya@gmail.com                                    9876543211
+CSE
+
+Rahul                                              11249A003            21 rahul@gmail.com                                    9876543212
+ECE
+
+Divya                                              11249A004            20 divya@gmail.com                                    9876543213
+ECE
+
+KIRAN                                              11249A005            19 kiran@gmail.com                                    9876543214
+CSE
+
+Sneha                                              11249A006            20 sneha@gmail.com                                    9876543215
+IT
+
+Vijay                                              11249A007            21 vijay@gmail.com                                    9876543216
+AIDS
+
+Anjali                                             11249A008            19 anjali@gmail.com                                   9876543217
+AIML
+
+
+8 rows selected.
+
+SQL> COLUMN STUDENT_ID FORMAT 9999
+SQL> SQL> COLUMN STUDENT_NAME FORMAT A20
+SP2-0734: unknown command beginning "SQL> COLUM..." - rest of line ignored.
+SQL> SQL> COLUMN STUDENT_AGE FORMAT 999
+SP2-0734: unknown command beginning "SQL> COLUM..." - rest of line ignored.
+SQL> SQL> COLUMN STUDENT_PHONE FORMAT 999999999999
+SP2-0734: unknown command beginning "SQL> COLUM..." - rest of line ignored.
+SQL> SQL> COLUMN STUDENT_EMAIL FORMAT A30
+SP2-0734: unknown command beginning "SQL> COLUM..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> SQL> COLUMN STUDENT_DEPT FORMAT A10
+SP2-0734: unknown command beginning "SQL> COLUM..." - rest of line ignored.
+SQL> SQL> SELECT * FROM STUDENT8;
+SP2-0734: unknown command beginning "SQL> SELEC..." - rest of line ignored.
+SQL>
+SQL>
+SQL> SET LINESIZE 300
+SQL> SET PAGESIZE 100
+SQL>
+SQL> COLUMN STUDENT_ID FORMAT 99999
+SQL> COLUMN STUDENT_NAME FORMAT A30
+SQL> COLUMN STUDENT_AGE FORMAT 9999
+SQL> COLUMN STUDENT_PHONE FORMAT 9999999999999
+SQL> COLUMN STUDENT_EMAIL FORMAT A60
+SQL> COLUMN STUDENT_DEPT FORMAT A20
+SQL> SELECT S.NAME, S.REG, S.AGE,S.EMAIL,S.PHONE, C.COURSE_NAME
+  2  FROM STUDENT8 S
+  3  JOIN COURSE4 C
+  4  ON S.COURSE_ID = C.COURSE_ID;
+
+NAME                                               REG                 AGE EMAIL                                                   PHONE COURSE_NAME
+-------------------------------------------------- ------------ ---------- -------------------------------------------------- ---------- --------------------
+Arun Kumar                                         11249a001            20 arun@gmail.com                                     9876543210 CSE
+Priya                                              11249A002            19 priya@gmail.com                                    9876543211 CSE
+Rahul                                              11249A003            21 rahul@gmail.com                                    9876543212 ECE
+Divya                                              11249A004            20 divya@gmail.com                                    9876543213 ECE
+KIRAN                                              11249A005            19 kiran@gmail.com                                    9876543214 CSE
+Sneha                                              11249A006            20 sneha@gmail.com                                    9876543215 IT
+Vijay                                              11249A007            21 vijay@gmail.com                                    9876543216 AIDS
+Anjali                                             11249A008            19 anjali@gmail.com                                   9876543217 AIML
+
+8 rows selected.
+
+SQL>
+
+
