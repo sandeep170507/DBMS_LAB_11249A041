@@ -1,0 +1,253 @@
+SQL> CREATE TABLE COURSE3(
+  2  COURSE_ID NUMBER(2) PRIMARY KEY,
+  3  COURSE_NAME VARCHAR(20) NOT NULL);
+CREATE TABLE COURSE3(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE TABLE COURSE4(
+  2  COURSE_ID NUMBER(2) PRIMARY KEY,
+  3  COURSE_NAME VARCHAR(20) NOT NULL);
+
+Table created.
+
+SQL> desc COURSE4
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSE_ID                                 NOT NULL NUMBER(2)
+ COURSE_NAME                               NOT NULL VARCHAR2(20)
+
+SQL> CREATE TABLE STUDENT7(
+  2  NAME VARCHAR2(50),
+  3  REG VARCHAR(12) PRIMARY KEY,
+  4  AGE NUMBER (2) CHECK (AGE>=18),
+  5  COURSE_ID NUMBER(2)REFERENCES Course(COURSE_ID),
+  6  EMAIL VARCHAR2(50) UNIQUE,
+  7  PHONE NUMBER(10) UNIQUE);
+
+Table created.
+
+SQL> );
+SP2-0042: unknown command ")" - rest of line ignored.
+SQL> 
+SQL>  desc STUDENT7
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(50)
+ REG                                       NOT NULL VARCHAR2(12)
+ AGE                                                NUMBER(2)
+ COURSE_ID                                          NUMBER(2)
+ EMAIL                                              VARCHAR2(50)
+ PHONE                                              NUMBER(10)
+
+SQL> INSERT INTO COURSE4 VALUES(1,'CSE');
+
+1 row created.
+
+SQL> desc COURSE4
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSE_ID                                 NOT NULL NUMBER(2)
+ COURSE_NAME                               NOT NULL VARCHAR2(20)
+
+SQL> SELECT * FROM COURSE4
+  2  );
+)
+*
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT * FROM COURSE4;
+
+ COURSE_ID COURSE_NAME                                                          
+---------- --------------------                                                 
+         1 CSE                                                                  
+
+SQL> INSERT INTO COURSE4 VALUES(1,'ECE');
+INSERT INTO COURSE4 VALUES(1,'ECE')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A041.SYS_C0029319) violated 
+
+
+SQL> INSERT INTO COURSE4 VALUES(2,'ECE');
+
+1 row created.
+
+SQL> SELECT * FROM COURSE4;
+
+ COURSE_ID COURSE_NAME                                                          
+---------- --------------------                                                 
+         1 CSE                                                                  
+         2 ECE                                                                  
+
+SQL> INSERT INTO STUDENT7 VALUES('SANDEEP',11249A041,18,1,'sandeep@gmail.com',9704876242);
+INSERT INTO STUDENT7 VALUES('SANDEEP',11249A041,18,1,'sandeep@gmail.com',9704876242)
+                                           *
+ERROR at line 1:
+ORA-00917: missing comma 
+
+
+SQL> INSERT INTO STUDENT7 VALUES('SANDEEP',11249041,18,1,'sandeep@gmail.com',9704876242);
+INSERT INTO STUDENT7 VALUES('SANDEEP',11249041,18,1,'sandeep@gmail.com',9704876242)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A041.SYS_C0029401) violated - parent key not 
+found 
+
+
+SQL> INSERT INTO STUDENT7 VALUES('SANDEEP',41,18,1,'sandeep@gmail.com',9704876242);
+INSERT INTO STUDENT7 VALUES('SANDEEP',41,18,1,'sandeep@gmail.com',9704876242)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A041.SYS_C0029401) violated - parent key not 
+found 
+
+
+SQL> INSERT INTO STUDENT7 VALUES('SANDEEP',41,18,'sandeep@gmail.com',9704876242);
+INSERT INTO STUDENT7 VALUES('SANDEEP',41,18,'sandeep@gmail.com',9704876242)
+            *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> INSERT INTO STUDENT7 VALUES('SANDEEP',41,18,1,'sandeep@gmail.com',9704876242);
+INSERT INTO STUDENT7 VALUES('SANDEEP',41,18,1,'sandeep@gmail.com',9704876242)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A041.SYS_C0029401) violated - parent key not 
+found 
+
+
+SQL> INSERT INTO STUDENT7 VALUES('ROHITH',11249,18,1,'rohith@gmail.com',9491259133);
+INSERT INTO STUDENT7 VALUES('ROHITH',11249,18,1,'rohith@gmail.com',9491259133)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A041.SYS_C0029401) violated - parent key not 
+found 
+
+
+SQL> SELECT * FROM COURSE7;
+SELECT * FROM COURSE7
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> INSERT * FROM STUDENT7
+  2  ;
+INSERT * FROM STUDENT7
+       *
+ERROR at line 1:
+ORA-00925: missing INTO keyword 
+
+
+SQL> INSERT * FROM STUDENT7;
+INSERT * FROM STUDENT7
+       *
+ERROR at line 1:
+ORA-00925: missing INTO keyword 
+
+
+SQL> SELECT * FROM STUDENT7;
+
+no rows selected
+
+SQL> INSERT INTO STUDENT7 VALUES('ROHITH',11249,18,1,'rohith@gmail.com',9491259133);
+INSERT INTO STUDENT7 VALUES('ROHITH',11249,18,1,'rohith@gmail.com',9491259133)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A041.SYS_C0029401) violated - parent key not 
+found 
+
+
+SQL> CREATE TABLE STUDENT8(
+  2  NAME VARCHAR2(50),
+  3  REG VARCHAR(12) PRIMARY KEY,
+  4  AGE NUMBER (2) CHECK (AGE>=18),
+  5  COURSE_ID NUMBER(2)REFERENCES COURSE4(COURSE_ID),
+  6  EMAIL VARCHAR2(50) UNIQUE,
+  7  PHONE NUMBER(10) UNIQUE);
+
+Table created.
+
+SQL> );
+SP2-0042: unknown command ")" - rest of line ignored.
+SQL> 
+SQL> INSERT INTO STUDENT7 VALUES('ROHITH',11249,18,1,'rohith@gmail.com',9491259133);
+INSERT INTO STUDENT7 VALUES('ROHITH',11249,18,1,'rohith@gmail.com',9491259133)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A041.SYS_C0029401) violated - parent key not 
+found 
+
+
+SQL> desc COURSE4
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSE_ID                                 NOT NULL NUMBER(2)
+ COURSE_NAME                               NOT NULL VARCHAR2(20)
+
+SQL> desc STUDENT8
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(50)
+ REG                                       NOT NULL VARCHAR2(12)
+ AGE                                                NUMBER(2)
+ COURSE_ID                                          NUMBER(2)
+ EMAIL                                              VARCHAR2(50)
+ PHONE                                              NUMBER(10)
+
+SQL> SELECT * FROM COURSE4
+  2  
+SQL> SELECT * FROM COURSE4;
+
+ COURSE_ID COURSE_NAME                                                          
+---------- --------------------                                                 
+         1 CSE                                                                  
+         2 ECE                                                                  
+
+SQL> INSERT INTO STUDENT8 VALUES('sandeep',041,18,1,'sandeep@gmail.com',9704876242);
+
+1 row created.
+
+SQL> SELECT * FROM STUDENT8;
+
+NAME                                               REG                 AGE      
+-------------------------------------------------- ------------ ----------      
+ COURSE_ID EMAIL                                                   PHONE        
+---------- -------------------------------------------------- ----------        
+sandeep                                            41                   18      
+         1 sandeep@gmail.com                                  9704876242        
+                                                                                
+
+SQL> SET LINESIZE 150
+SQL> SET PAGESIZE 50
+SQL> COLUMN NAME FORMAT A15
+SQL> COLUMN EMAIL FORMAT A30
+SQL> COLUMN REG FORMAT 9999999
+SQL> COLUMN AGE FORMAT 99
+SQL> COLUMN COURSE_ID FORMAT 999
+SQL> COLUMN PHONE FORMAT 9999999999
+SQL> 
+SQL> SELECT * FROM STUDENT8;
+
+NAME            REG          AGE COURSE_ID EMAIL                                PHONE                                                                 
+--------------- ------------ --- --------- ------------------------------ -----------                                                                 
+sandeep         41            18         1 sandeep@gmail.com               9704876242                                                                 
+
+SQL> INSERT INTO STUDENT8 VALUES('rohith','11249A037',18,2,'rohith@gmail.com',9491259133);
+
+1 row created.
+
+SQL> SELECT * FROM STUDENT8;
+
+NAME            REG          AGE COURSE_ID EMAIL                                PHONE                                                                 
+--------------- ------------ --- --------- ------------------------------ -----------                                                                 
+sandeep         41            18         1 sandeep@gmail.com               9704876242                                                                 
+rohith          11249A037     18         2 rohith@gmail.com                9491259133                                                                 
+
+SQL> spool off;

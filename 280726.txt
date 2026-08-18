@@ -1,0 +1,201 @@
+Microsoft Windows [Version 10.0.19045.6456]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Admin>sqlplus
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Jul 28 15:12:34 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: a041@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> create table employee(
+  2  empno number(4)primary key,ename varchar2(20),
+  3  job date,
+  4  sal number(5));
+create table employee(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> Create table Employee(
+  2
+SQL>
+SQL>
+SQL> Create table student(
+  2  regno(9)Primary Key,
+  3  Ename Varchar2(20),
+  4  course year;
+regno(9)Primary Key,
+     *
+ERROR at line 2:
+ORA-00902: invalid datatype
+
+
+SQL> Create table Student(
+  2  Sreg Number(9)Primary Key,
+  3  Sname Varchar2(20);
+Sname Varchar2(20)
+                 *
+ERROR at line 3:
+ORA-00907: missing right parenthesis
+
+
+SQL> Create table Student(
+  2  Sreg Number(9)Primary Key,
+  3  Sname Varchar2(20));
+
+Table created.
+
+SQL> desc Student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SREG                                      NOT NULL NUMBER(9)
+ SNAME                                              VARCHAR2(20)
+
+SQL> Create table Student(
+  2  Sname Varchar2(20);
+Sname Varchar2(20)
+                 *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> Disconnected from Oracle Database 11g Release 11.2.0.1.0 - Production
+
+C:\Users\Admin>
+
+C:\Users\Admin>sqlplus
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Jul 28 15:51:49 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: a041@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> Create table Student(
+  2  Sreg number(9)ConstraintStud_dkey
+  3  Sreg number(9)ConstraintStud_pkey
+  4  Primary Key,
+  5  Sname Varchar2(20));
+Sreg number(9)ConstraintStud_dkey
+              *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> Create table Student(
+  2  Sreg number(9)Constraint Stu_pkey Primary Key,
+  3  Sname Varchar2(20));
+Create table Student(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> Create table Student1(
+  2  Sreg number(9)Constraint Stu_pkey Primary Key,
+  3  Sname Varchar2(20));
+
+Table created.
+
+SQL> desc Student1
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SREG                                      NOT NULL NUMBER(9)
+ SNAME                                              VARCHAR2(20)
+
+SQL> desc Student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SREG                                      NOT NULL NUMBER(9)
+ SNAME                                              VARCHAR2(20)
+
+SQL> Create table Student2(
+  2  Sreg number(9),
+  3  Sname Varchar2(20),
+  4  Constraint Stu_pkey primary key(sreg));
+Constraint Stu_pkey primary key(sreg))
+           *
+ERROR at line 4:
+ORA-02264: name already used by an existing constraint
+
+
+SQL> Create table Student2(
+  2  Sreg number(9),
+  3  Sname Varchar2(20),Constraint Stu_pkey Primary Key(sreg));
+Sname Varchar2(20),Constraint Stu_pkey Primary Key(sreg))
+                              *
+ERROR at line 3:
+ORA-02264: name already used by an existing constraint
+
+
+SQL> Create table Student2(
+  2  Sreg number(9),
+  3  Sname Varchar2(20),Constraint Stud_pkey Primary Key(Sreg));
+
+Table created.
+
+SQL> desc Student2
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SREG                                      NOT NULL NUMBER(9)
+ SNAME                                              VARCHAR2(20)
+
+SQL> insert into Student2
+  2  values(041,"sandeep");
+values(041,"sandeep")
+           *
+ERROR at line 2:
+ORA-00984: column not allowed here
+
+
+SQL> insert into Student2
+  2  values(041,'sandeep');
+
+1 row created.
+
+SQL> desc Student2
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SREG                                      NOT NULL NUMBER(9)
+ SNAME                                              VARCHAR2(20)
+
+SQL> select * from student2
+  2  ;
+
+      SREG SNAME
+---------- --------------------
+        41 sandeep
+
+SQL>
+SQL>
+SQL>
+SQL>
+SQL>
+SQL> spool d:\11249a041\280726.txt
+SP2-0606: Cannot create SPOOL file "d:\11249a041\280726.txt"
+SQL> spool d:\11249a041\280726.txt
+SQL> desc student2
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SREG                                      NOT NULL NUMBER(9)
+ SNAME                                              VARCHAR2(20)
+
+SQL> select * from student2
+  2  ;
+
+      SREG SNAME
+---------- --------------------
+        41 sandeep
+
+SQL> spool off;

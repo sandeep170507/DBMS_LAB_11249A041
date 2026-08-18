@@ -1,0 +1,66 @@
+SQL> create table student1(sno Number(5), sname Varchar2(20),deptno Number(2));
+create table student1(sno Number(5), sname Varchar2(20),deptno Number(2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table student2(sno Number(5), sname Varchar2(20),deptno Number(2));
+create table student2(sno Number(5), sname Varchar2(20),deptno Number(2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE TABLE COURSE5(COURSE_ID NUMBER(2) PRIMARY KEY,
+  2     COURSE_NAME VARCHAR(50));
+
+Table created.
+
+SQL> desc COURSE5
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ COURSE_ID                                 NOT NULL NUMBER(2)
+ COURSE_NAME                                        VARCHAR2(50)
+
+SQL> CREATE TABLE STUDENT8(
+  2      NAME VARCHAR2(50),
+  3      REG VARCHAR(12),
+  4      AGE NUMBER (2),
+  5      EMAIL VARCHAR2(50));
+CREATE TABLE STUDENT8(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> CREATE TABLE STUDENT9(
+  2      NAME VARCHAR2(50),
+  3      REG VARCHAR(12),
+  4      AGE NUMBER (2),
+  5      EMAIL VARCHAR2(50));
+
+Table created.
+
+SQL> DESC STUDENT9
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(50)
+ REG                                                VARCHAR2(12)
+ AGE                                                NUMBER(2)
+ EMAIL                                              VARCHAR2(50)
+
+SQL> ALTER TABLE STUDENT9 ADD GENDER CHAR(2);
+
+Table altered.
+
+SQL> DESC STUDENT9
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(50)
+ REG                                                VARCHAR2(12)
+ AGE                                                NUMBER(2)
+ EMAIL                                              VARCHAR2(50)
+ GENDER                                             CHAR(2)
+
+SQL> spool off;

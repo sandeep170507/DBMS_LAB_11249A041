@@ -1,0 +1,289 @@
+SQL> 
+SQL> 
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Arun Kumar', '11249a001', 20, 1, 'arun@gmail.com', 9876543210);
+
+1 row created.
+
+SQL> select * from STUDENT8;
+
+NAME                                               REG                 AGE      
+-------------------------------------------------- ------------ ----------      
+ COURSE_ID EMAIL                                                   PHONE        
+---------- -------------------------------------------------- ----------        
+Arun Kumar                                         11249a001            20      
+         1 arun@gmail.com                                     9876543210        
+                                                                                
+
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Priya', '11249A002', 10, 1, 'priya@gmail.com', 9876543211);
+INSERT INTO STUDENT8 VALUES
+*
+ERROR at line 1:
+ORA-02290: check constraint (A041.SYS_C0029515) violated 
+
+
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Priya', '11249A002', 19, 1, 'priya@gmail.com', 9876543211);
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Rahul', '11249A003', 21, 2, 'rahul@gmail.com', 9876543212);
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Divya', '11249A004', 20, 2, 'divya@gmail.com', 9876543213);
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('KIRAN', '11249A005', 19, 1, 'karthik@gmail.com', 9876543214);
+
+1 row created.
+
+SQL> select * from STUDENT8;
+
+NAME                                               REG                 AGE      
+-------------------------------------------------- ------------ ----------      
+ COURSE_ID EMAIL                                                   PHONE        
+---------- -------------------------------------------------- ----------        
+Arun Kumar                                         11249a001            20      
+         1 arun@gmail.com                                     9876543210        
+                                                                                
+Priya                                              11249A002            19      
+         1 priya@gmail.com                                    9876543211        
+                                                                                
+Rahul                                              11249A003            21      
+         2 rahul@gmail.com                                    9876543212        
+                                                                                
+
+NAME                                               REG                 AGE      
+-------------------------------------------------- ------------ ----------      
+ COURSE_ID EMAIL                                                   PHONE        
+---------- -------------------------------------------------- ----------        
+Divya                                              11249A004            20      
+         2 divya@gmail.com                                    9876543213        
+                                                                                
+KIRAN                                              11249A005            19      
+         1 karthik@gmail.com                                  9876543214        
+                                                                                
+
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('KIRAN', '11249A005', 19, 1, 'kiran@gmail.com', 9876543214);
+INSERT INTO STUDENT8 VALUES
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A041.SYS_C0029516) violated 
+
+
+SQL> 
+SQL> INSERT INTO COURSE4 VALUES (3, 'MECH');
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO COURSE4 VALUES (4, 'CIVIL');
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO COURSE4 VALUES (5, 'EEE');
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO COURSE4 VALUES (6, 'IT');
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO COURSE4 VALUES (7, 'AIDS');
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO COURSE4 VALUES (8, 'AIML');
+
+1 row created.
+
+SQL> 
+SQL> 
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Sneha', '11249A006', 20, 6, 'sneha@gmail.com', 9876543215);
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Vijay', '11249A007', 21, 7, 'vijay@gmail.com', 9876543216);
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO STUDENT8 VALUES
+  2  ('Anjali', '11249A008', 19, 8, 'anjali@gmail.com', 9876543217);
+
+1 row created.
+
+SQL> select * from STUDENT8;
+
+NAME                                               REG                 AGE      
+-------------------------------------------------- ------------ ----------      
+ COURSE_ID EMAIL                                                   PHONE        
+---------- -------------------------------------------------- ----------        
+Arun Kumar                                         11249a001            20      
+         1 arun@gmail.com                                     9876543210        
+                                                                                
+Priya                                              11249A002            19      
+         1 priya@gmail.com                                    9876543211        
+                                                                                
+Rahul                                              11249A003            21      
+         2 rahul@gmail.com                                    9876543212        
+                                                                                
+
+NAME                                               REG                 AGE      
+-------------------------------------------------- ------------ ----------      
+ COURSE_ID EMAIL                                                   PHONE        
+---------- -------------------------------------------------- ----------        
+Divya                                              11249A004            20      
+         2 divya@gmail.com                                    9876543213        
+                                                                                
+KIRAN                                              11249A005            19      
+         1 karthik@gmail.com                                  9876543214        
+                                                                                
+Sneha                                              11249A006            20      
+         6 sneha@gmail.com                                    9876543215        
+                                                                                
+
+NAME                                               REG                 AGE      
+-------------------------------------------------- ------------ ----------      
+ COURSE_ID EMAIL                                                   PHONE        
+---------- -------------------------------------------------- ----------        
+Vijay                                              11249A007            21      
+         7 vijay@gmail.com                                    9876543216        
+                                                                                
+Anjali                                             11249A008            19      
+         8 anjali@gmail.com                                   9876543217        
+                                                                                
+
+8 rows selected.
+
+SQL> SET LINESIZE 150
+SQL> SET PAGESIZE 50
+SQL> 
+SQL> COLUMN STUDENT_ID FORMAT 9999
+SQL> COLUMN STUDENT_NAME FORMAT A20
+SQL> COLUMN STUDENT_AGE FORMAT 999
+SQL> COLUMN STUDENT_PHONE FORMAT 999999999999
+SQL> COLUMN STUDENT_EMAIL FORMAT A30
+SQL> COLUMN STUDENT_DEPT FORMAT A10
+SQL> select * from STUDENT8;
+
+NAME                                               REG                 AGE  COURSE_ID EMAIL                                                   PHONE   
+-------------------------------------------------- ------------ ---------- ---------- -------------------------------------------------- ----------   
+Arun Kumar                                         11249a001            20          1 arun@gmail.com                                     9876543210   
+Priya                                              11249A002            19          1 priya@gmail.com                                    9876543211   
+Rahul                                              11249A003            21          2 rahul@gmail.com                                    9876543212   
+Divya                                              11249A004            20          2 divya@gmail.com                                    9876543213   
+KIRAN                                              11249A005            19          1 karthik@gmail.com                                  9876543214   
+Sneha                                              11249A006            20          6 sneha@gmail.com                                    9876543215   
+Vijay                                              11249A007            21          7 vijay@gmail.com                                    9876543216   
+Anjali                                             11249A008            19          8 anjali@gmail.com                                   9876543217   
+
+8 rows selected.
+
+SQL> select * from COURSE4;
+
+ COURSE_ID COURSE_NAME                                                                                                                                
+---------- --------------------                                                                                                                       
+         3 MECH                                                                                                                                       
+         4 CIVIL                                                                                                                                      
+         5 EEE                                                                                                                                        
+         6 IT                                                                                                                                         
+         7 AIDS                                                                                                                                       
+         8 AIML                                                                                                                                       
+         1 CSE                                                                                                                                        
+         2 ECE                                                                                                                                        
+
+8 rows selected.
+
+SQL> SELECT * FROM COURSE4
+  2  ORDER BY COURSE_ID;
+
+ COURSE_ID COURSE_NAME                                                                                                                                
+---------- --------------------                                                                                                                       
+         1 CSE                                                                                                                                        
+         2 ECE                                                                                                                                        
+         3 MECH                                                                                                                                       
+         4 CIVIL                                                                                                                                      
+         5 EEE                                                                                                                                        
+         6 IT                                                                                                                                         
+         7 AIDS                                                                                                                                       
+         8 AIML                                                                                                                                       
+
+8 rows selected.
+
+SQL> SELECT * FROM COURSE4
+  2  ;
+
+ COURSE_ID COURSE_NAME                                                                                                                                
+---------- --------------------                                                                                                                       
+         3 MECH                                                                                                                                       
+         4 CIVIL                                                                                                                                      
+         5 EEE                                                                                                                                        
+         6 IT                                                                                                                                         
+         7 AIDS                                                                                                                                       
+         8 AIML                                                                                                                                       
+         1 CSE                                                                                                                                        
+         2 ECE                                                                                                                                        
+
+8 rows selected.
+
+SQL> select NAME,REG,AGE,COURSE_ID,COURSE_NAME,EMAIL,PHONE FROM STUDENT8,COURSE4;
+select NAME,REG,AGE,COURSE_ID,COURSE_NAME,EMAIL,PHONE FROM STUDENT8,COURSE4
+                    *
+ERROR at line 1:
+ORA-00918: column ambiguously defined 
+
+
+SQL> 
+SQL> SQL> select NAME,REG,AGE,COURSE_ID,COURSE_NAME,EMAIL,PHONE FROM STUDENT8,COURSE4;
+SP2-0734: unknown command beginning "SQL> selec..." - rest of line ignored.
+SQL> select NAME,REG,AGE,COURSE_ID,COURSE_NAME,EMAIL,PHONE FROM STUDENT8,COURSE4
+  2                      *
+  3  ERROR at line 1:
+  4  ORA-00918: column ambiguously defined
+  5  
+SQL> spool off;
+SQL> DESC STUDENT8
+ERROR:
+ORA-12571: TNS:packet writer failure 
+
+
+SQL> select * from STUDENT8;
+ERROR:
+ORA-03114: not connected to ORACLE 
+
+
+SQL> SQLPLUS
+SP2-0042: unknown command "SQLPLUS" - rest of line ignored.
+SQL> sqlplus
+SP2-0042: unknown command "sqlplus" - rest of line ignored.
+SQL> 
+SQL> select * from COURSE4;
+
+ COURSE_ID COURSE_NAME                                                          
+---------- --------------------                                                 
+         1 CSE                                                                  
+         2 ECE                                                                  
+
+SQL> select * from STUDENT8;
+
+no rows selected
+
+SQL> SPOOL OFF
