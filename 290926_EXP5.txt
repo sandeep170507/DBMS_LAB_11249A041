@@ -1,0 +1,167 @@
+SQL> CREATE TABLE STUDENT97
+  2  (
+  3      STUDENT_ID NUMBER(5) PRIMARY KEY,
+  4      STUDENT_NAME VARCHAR2(30),
+  5      DEPARTMENT VARCHAR2(20),
+  6      MARKS NUMBER(3)
+  7  );
+
+Table created.
+
+SQL> 
+SQL> INSERT INTO STUDENT97 VALUES (101,'ARUN','CSE',85);
+
+1 row created.
+
+SQL> INSERT INTO STUDENT97 VALUES (102,'BALA','ECE',78);
+
+1 row created.
+
+SQL> INSERT INTO STUDENT97 VALUES (103,'DIVYA','IT',92);
+
+1 row created.
+
+SQL> INSERT INTO STUDENT97 VALUES (104,'KAVI','CSE',88);
+
+1 row created.
+
+SQL> 
+SQL> CREATE TABLE ALUMNI
+  2  (
+  3      STUDENT_NAME VARCHAR2(30)
+  4  );
+
+Table created.
+
+SQL> 
+SQL> INSERT INTO ALUMNI VALUES ('ARUN');
+
+1 row created.
+
+SQL> INSERT INTO ALUMNI VALUES ('RAVI');
+
+1 row created.
+
+SQL> INSERT INTO ALUMNI VALUES ('KAVI');
+
+1 row created.
+
+SQL> SELECT *
+  2  FROM STUDENT97
+  3  WHERE DEPARTMENT IN ('CSE','IT');
+
+STUDENT_ID STUDENT_NAME                   DEPARTMENT                MARKS       
+---------- ------------------------------ -------------------- ----------       
+       101 ARUN                           CSE                          85       
+       103 DIVYA                          IT                           92       
+       104 KAVI                           CSE                          88       
+
+
+
+SQL> SELECT *
+  2  FROM STUDENT97
+  3  WHERE MARKS > ANY
+  4  (
+  5      SELECT MARKS
+  6      FROM STUDENT97
+  7      WHERE DEPARTMENT = 'ECE'
+  8  );
+
+STUDENT_ID STUDENT_NAME                   DEPARTMENT                MARKS       
+---------- ------------------------------ -------------------- ----------       
+       103 DIVYA                          IT                           92       
+       104 KAVI                           CSE                          88       
+       101 ARUN                           CSE                          85       
+
+
+SQL> SELECT *
+  2  FROM STUDENT97
+  3  WHERE MARKS > ALL
+  4  (
+  5      SELECT MARKS
+  6      FROM STUDENT97
+  7      WHERE DEPARTMENT = 'ECE'
+  8  );
+
+STUDENT_ID STUDENT_NAME                   DEPARTMENT                MARKS       
+---------- ------------------------------ -------------------- ----------       
+       101 ARUN                           CSE                          85       
+       104 KAVI                           CSE                          88       
+       103 DIVYA                          IT                           92       
+
+SQL> 
+SQL> SELECT STUDENT_NAME
+  2  FROM STUDENT97 S
+  3  WHERE EXISTS
+  4  (
+  5      SELECT *
+  6      FROM ALUMNI A
+  7      WHERE A.STUDENT_NAME = S.STUDENT_NAME
+  8  );
+
+STUDENT_NAME                                                                    
+------------------------------                                                  
+ARUN                                                                            
+KAVI                                                                            
+
+SQL> 
+SQL> SELECT STUDENT_NAME
+  2  FROM STUDENT97 S
+  3  WHERE NOT EXISTS
+  4  (
+  5      SELECT *
+  6      FROM ALUMNI A
+  7      WHERE A.STUDENT_NAME = S.STUDENT_NAME
+  8  );
+
+STUDENT_NAME                                                                    
+------------------------------                                                  
+BALA                                                                            
+DIVYA                                                                           
+
+SQL> SELECT STUDENT_NAME FROM STUDENT97
+  2  UNION
+  3  SELECT STUDENT_NAME FROM ALUMNI;
+
+STUDENT_NAME                                                                    
+------------------------------                                                  
+ARUN                                                                            
+BALA                                                                            
+DIVYA                                                                           
+KAVI                                                                            
+RAVI                                                                            
+
+SQL> 
+SQL> SELECT STUDENT_NAME FROM STUDENT97
+  2  INTERSECT
+  3  SELECT STUDENT_NAME FROM ALUMNI;
+
+STUDENT_NAME                                                                    
+------------------------------                                                  
+ARUN                                                                            
+KAVI                                                                            
+
+SQL> INSERT INTO STUDENT97 VALUES (101,'SURESH','EEE',80);
+INSERT INTO STUDENT97 VALUES (101,'SURESH','EEE',80)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A041.SYS_C0034284) violated 
+
+
+SQL> INSERT INTO STUDENT97 VALUES (NULL,'MANOJ','CSE',75);
+INSERT INTO STUDENT97 VALUES (NULL,'MANOJ','CSE',75)
+                              *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("A041"."STUDENT97"."STUDENT_ID") 
+
+
+SQL> SELECT * FROM STUDENT97;
+
+STUDENT_ID STUDENT_NAME                   DEPARTMENT                MARKS       
+---------- ------------------------------ -------------------- ----------       
+       101 ARUN                           CSE                          85       
+       102 BALA                           ECE                          78       
+       103 DIVYA                          IT                           92       
+       104 KAVI                           CSE                          88       
+
+SQL> spool off;

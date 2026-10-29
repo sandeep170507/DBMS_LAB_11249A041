@@ -1,0 +1,107 @@
+SQL> CREATE TABLE DEPARTMENT99
+  2  (
+  3  DEPT_ID NUMBER(3),
+  4  DEPT_NAME VARCHAR2(30),
+  5  CONSTRAINT PK_DEPT
+  6  PRIMARY KEY (DEPT_ID)
+  7  );
+
+Table created.
+
+SQL> CREATE TABLE EMPLOYEE97
+  2  (
+  3  EMP_ID NUMBER(5),
+  4  EMP_NAME VARCHAR2(30) CONSTRAINT NN_EMPNAME NOT NULL,
+  5  EMAIL VARCHAR2(50),
+  6  SALARY NUMBER(8),
+  7  DEPT_ID NUMBER(3),
+  8  CONSTRAINT PK_EMP PRIMARY KEY (EMP_ID),
+  9  CONSTRAINT UK_EMAIL UNIQUE (EMAIL),
+ 10  CONSTRAINT CK_SALARY CHECK (SALARY >= 10000),
+ 11  CONSTRAINT FK_DEPT FOREIGN KEY (DEPT_ID)
+ 12  REFERENCES DEPARTMENT99(DEPT_ID)
+ 13  );
+
+Table created.
+
+
+SQL> INSERT INTO DEPARTMENT99 VALUES (101,'CSE');
+
+1 row created.
+
+SQL> INSERT INTO DEPARTMENT99 VALUES (102,'ECE');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE97 VALUES (1001,'ARUN','arun@gmail.com',35000,101);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE97 VALUES (1002,'BALA','bala@gmail.com',30000,102);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE97 VALUES (1003,NULL,'divya@gmail.com',25000,101);
+INSERT INTO EMPLOYEE97 VALUES (1003,NULL,'divya@gmail.com',25000,101)
+                                    *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("A041"."EMPLOYEE97"."EMP_NAME") 
+
+
+SQL> INSERT INTO EMPLOYEE97 VALUES (1004,'KAVI','arun@gmail.com',28000,101);
+INSERT INTO EMPLOYEE97 VALUES (1004,'KAVI','arun@gmail.com',28000,101)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A041.UK_EMAIL) violated 
+
+
+SQL> INSERT INTO EMPLOYEE97 VALUES (1005,'RAVI','ravi@gmail.com',8000,101);
+INSERT INTO EMPLOYEE97 VALUES (1005,'RAVI','ravi@gmail.com',8000,101)
+*
+ERROR at line 1:
+ORA-02290: check constraint (A041.CK_SALARY) violated 
+
+
+SQL> INSERT INTO EMPLOYEE97 VALUES (1006,'SURESH','suresh@gmail.com',25000,105);
+INSERT INTO EMPLOYEE97 VALUES (1006,'SURESH','suresh@gmail.com',25000,105)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (A041.FK_DEPT) violated - parent key not found 
+
+
+SQL> INSERT INTO EMPLOYEE97 VALUES (1001,'MANOJ','manoj@gmail.com',30000,101);
+INSERT INTO EMPLOYEE97 VALUES (1001,'MANOJ','manoj@gmail.com',30000,101)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (A041.PK_EMP) violated 
+
+
+SQL> SELECT * FROM EMPLOYEE97;
+
+    EMP_ID EMP_NAME                                                             
+---------- ------------------------------                                       
+EMAIL                                                  SALARY    DEPT_ID        
+-------------------------------------------------- ---------- ----------        
+      1001 ARUN                                                                 
+arun@gmail.com                                          35000        101        
+                                                                                
+      1002 BALA                                                                 
+bala@gmail.com                                          30000        102        
+                                                                                
+
+SQL> DESC DEPARTMENT99;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPT_ID                                   NOT NULL NUMBER(3)
+ DEPT_NAME                                          VARCHAR2(30)
+
+SQL> DESC EMPLOYEE97;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(5)
+ EMP_NAME                                  NOT NULL VARCHAR2(30)
+ EMAIL                                              VARCHAR2(50)
+ SALARY                                             NUMBER(8)
+ DEPT_ID                                            NUMBER(3)
+
+SQL> SPOOL OFF;

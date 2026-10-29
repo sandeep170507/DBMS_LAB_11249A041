@@ -1,0 +1,357 @@
+
+D:\11249a041>sqlplus
+
+SQL*Plus: Release 11.2.0.1.0 Production on Tue Sep 8 14:29:19 2026
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: A041@db2021
+Enter password:
+
+Connected to:
+Oracle Database 11g Release 11.2.0.1.0 - Production
+
+SQL> spool d:\11249a041\080926.txt
+
+SQL> CREATE TABLE STUDENT99
+  2  (
+  3   STUDENT_ID NUMBER(5) PRIMARY KEY,
+  4   STUDENT_NAME VARCHAR2(30),
+  5   DEPARTMENT VARCHAR2(20),
+  6   AGE NUMBER(2),
+  7   MARKS NUMBER(3)
+  8  );
+
+Table created.
+
+SQL> INSERT INTO STUDENT99 VALUES (101,'ARUN','CSE',20,85);
+
+1 row created.
+
+SQL> INSERT INTO STUDENT99 VALUES (102,'BALA','ECE',21,78);
+
+1 row created.
+
+SQL> INSERT INTO STUDENT99 VALUES (103,'KAVI','CSE',20,92);
+
+1 row created.
+
+SQL> INSERT INTO STUDENT99 VALUES (104,'DIVYA','IT',21,88);
+
+1 row created.
+
+SQL> SELECT * FROM STUDENT99;
+
+STUDENT_ID STUDENT_NAME                   DEPARTMENT                  AGE
+---------- ------------------------------ -------------------- ----------
+     MARKS
+----------
+       101 ARUN                           CSE                          20
+        85
+
+       102 BALA                           ECE                          21
+        78
+
+       103 KAVI                           CSE                          20
+        92
+
+
+STUDENT_ID STUDENT_NAME                   DEPARTMENT                  AGE
+---------- ------------------------------ -------------------- ----------
+     MARKS
+----------
+       104 DIVYA                          IT                           21
+        88
+
+
+SQL> SELECT STUDENT_NAME, MARKS
+  2  FROM STUDENT99;
+
+STUDENT_NAME                        MARKS
+------------------------------ ----------
+ARUN                                   85
+BALA                                   78
+KAVI                                   92
+DIVYA                                  88
+
+SQL> SELECT *
+  2  FROM STUDENT99
+  3  WHERE DEPARTMENT = 'CSE';
+
+STUDENT_ID STUDENT_NAME                   DEPARTMENT                  AGE
+---------- ------------------------------ -------------------- ----------
+     MARKS
+----------
+       101 ARUN                           CSE                          20
+        85
+
+       103 KAVI                           CSE                          20
+        92
+
+
+SQL> SELECT STUDENT_NAME, MARKS
+  2  FROM STUDENT99
+  3  WHERE MARKS > 80;
+
+STUDENT_NAME                        MARKS
+------------------------------ ----------
+ARUN                                   85
+KAVI                                   92
+DIVYA                                  88
+
+
+..........EXP2............
+
+SQL> CREATE TABLE EMPLOYEE99
+  2  (
+  3   EMP_ID NUMBER(5) PRIMARY KEY,
+  4   EMP_NAME VARCHAR2(30),
+  5   DEPARTMENT VARCHAR2(20),
+  6   SALARY NUMBER(8),
+  7   CITY VARCHAR2(20)
+  8  );
+
+Table created.
+
+SQL> INSERT INTO EMPLOYEE99 VALUES (101,'ARUN','CSE',35000,'CHENNAI');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE99 VALUES (102,'BALA','ECE',32000,'VELLORE');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE99 VALUES (104,'DIVYA','IT',40000,'KANCHIPURAM');
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE99 VALUES (103,'KAVI','CSE',38000,'CHENNAI');
+
+1 row created.
+
+SQL>
+SQL> SELECT * FROM EMPLOYEE99;
+
+    EMP_ID EMP_NAME                       DEPARTMENT               SALARY
+---------- ------------------------------ -------------------- ----------
+CITY
+--------------------
+       101 ARUN                           CSE                       35000
+CHENNAI
+
+       102 BALA                           ECE                       32000
+VELLORE
+
+       104 DIVYA                          IT                        40000
+KANCHIPURAM
+
+
+    EMP_ID EMP_NAME                       DEPARTMENT               SALARY
+---------- ------------------------------ -------------------- ----------
+CITY
+--------------------
+       103 KAVI                           CSE                       38000
+CHENNAI
+
+
+SQL> UPDATE EMPLOYEE99
+  2  SET SALARY = 35000
+  3  WHERE EMP_ID = 102;
+
+1 row updated.
+
+SQL>
+SQL> SELECT * FROM EMPLOYEE99
+  2  WHERE EMP_ID = 102;
+
+    EMP_ID EMP_NAME                       DEPARTMENT               SALARY
+---------- ------------------------------ -------------------- ----------
+CITY
+--------------------
+       102 BALA                           ECE                       35000
+VELLORE
+
+
+SQL> DELETE FROM EMPLOYEE99
+  2  WHERE DEPARTMENT = 'IT';
+
+1 row deleted.
+
+SQL> SELECT * FROM EMPLOYEE99;
+
+    EMP_ID EMP_NAME                       DEPARTMENT               SALARY
+---------- ------------------------------ -------------------- ----------
+CITY
+--------------------
+       101 ARUN                           CSE                       35000
+CHENNAI
+
+       102 BALA                           ECE                       35000
+VELLORE
+
+       103 KAVI                           CSE                       38000
+CHENNAI
+
+
+SQL> ALTER TABLE EMPLOYEE99
+  2  ADD EMAIL VARCHAR2(40);
+
+Table altered.
+
+SQL> DESC EMPLOYEE99;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(5)
+ EMP_NAME                                           VARCHAR2(30)
+ DEPARTMENT                                         VARCHAR2(20)
+ SALARY                                             NUMBER(8)
+ CITY                                               VARCHAR2(20)
+ EMAIL                                              VARCHAR2(40)
+
+SQL>
+SQL> ALTER TABLE EMPLOYEE99
+  2  MODIFY EMP_NAME VARCHAR2(50);
+
+Table altered.
+
+
+SQL> DESC EMPLOYEE99;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(5)
+ EMP_NAME                                           VARCHAR2(50)
+ DEPARTMENT                                         VARCHAR2(20)
+ SALARY                                             NUMBER(8)
+ CITY                                               VARCHAR2(20)
+ EMAIL                                              VARCHAR2(40)
+
+SQL> SELECT *
+  2  FROM EMPLOYEE99
+  3  WHERE DEPARTMENT = 'CSE';
+
+    EMP_ID EMP_NAME
+---------- --------------------------------------------------
+DEPARTMENT               SALARY CITY
+-------------------- ---------- --------------------
+EMAIL
+----------------------------------------
+       101 ARUN
+CSE                       35000 CHENNAI
+
+
+       103 KAVI
+CSE                       38000 CHENNAI
+
+
+    EMP_ID EMP_NAME
+---------- --------------------------------------------------
+DEPARTMENT               SALARY CITY
+-------------------- ---------- --------------------
+EMAIL
+----------------------------------------
+
+
+SQL> SELECT EMP_NAME, SALARY
+  2  FROM EMPLOYEE99
+  3  WHERE SALARY > 35000;
+
+EMP_NAME                                               SALARY
+-------------------------------------------------- ----------
+KAVI                                                    38000
+
+SQL> SELECT EMP_NAME, CITY
+  2  FROM EMPLOYEE99
+  3  WHERE CITY = 'CHENNAI';
+
+EMP_NAME                                           CITY
+-------------------------------------------------- --------------------
+ARUN                                               CHENNAI
+KAVI                                               CHENNAI
+
+
+
+.........EXP3..........
+
+SQL> CREATE TABLE EMPLOYEE98
+  2  (
+  3   EMP_ID NUMBER(5) PRIMARY KEY,
+  4   EMP_NAME VARCHAR2(30),
+  5   SALARY NUMBER(8)
+  6  );
+
+Table created.
+
+SQL> INSERT INTO EMPLOYEE98 VALUES (101,'ARUN',35000);
+
+1 row created.
+
+SQL> INSERT INTO EMPLOYEE98 VALUES (102,'BALA',40000);
+
+1 row created.
+
+SQL> GRANT SELECT
+  2  ON EMPLOYEE98
+  3  TO SCOTT;
+
+Grant succeeded.
+
+SQL> GRANT SELECT, INSERT, UPDATE
+  2  ON EMPLOYEE98
+  3  TO SCOTT;
+
+Grant succeeded.
+
+SQL> REVOKE INSERT
+  2  ON EMPLOYEE98
+  3  FROM SCOTT;
+
+Revoke succeeded.
+
+
+SQL> INSERT INTO EMPLOYEE98 VALUES (103,'DIVYA',45000);
+
+1 row created.
+
+SQL> SELECT * FROM EMPLOYEE98;
+
+    EMP_ID EMP_NAME                           SALARY
+---------- ------------------------------ ----------
+       101 ARUN                                35000
+       102 BALA                                40000
+       103 DIVYA                               45000
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> INSERT INTO EMPLOYEE98 VALUES (104,'KAVI',42000);
+
+1 row created.
+
+SQL> SAVEPOINT SP1;
+
+Savepoint created.
+
+SQL> INSERT INTO EMPLOYEE98 VALUES (105,'RAVI',38000);
+
+1 row created.
+
+SQL> ROLLBACK TO SP1;
+
+Rollback complete.
+
+SQL>
+SQL> SELECT * FROM EMPLOYEE98;
+
+    EMP_ID EMP_NAME                           SALARY
+---------- ------------------------------ ----------
+       101 ARUN                                35000
+       102 BALA                                40000
+       103 DIVYA                               45000
+       104 KAVI                                42000
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> spool off;
